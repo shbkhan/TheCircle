@@ -3,6 +3,7 @@ package com.shbkhan.thecircle;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -65,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
             messageScreen = findViewById(R.id.imageViewMessageMain);
             premiumScreen = findViewById(R.id.imageViewPremiumMain);
             companyName = findViewById(R.id.textViewCompanyNameMain);
+            premiumScreen.setClickable(false);
+            premiumScreen.setVisibility(View.GONE);
 
             //Home button is clicked.
             homeScreen.setOnClickListener(view -> {

@@ -87,6 +87,8 @@ public class LoginPage extends AppCompatActivity {
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(LoginPage.this,ResetPassword.class);
+                startActivity(intent);
 
             }
         });
