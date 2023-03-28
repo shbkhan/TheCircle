@@ -42,6 +42,10 @@ public class SignupPage extends AppCompatActivity {
         signUp = findViewById(R.id.buttonSignUpSignUp);
         googleSignup = findViewById(R.id.imageButtonGoogle);
         facebookSignUp = findViewById(R.id.imageButtonFacebook);
+        googleSignup.setClickable(false);
+        googleSignup.setVisibility(View.GONE);
+        facebookSignUp.setClickable(false);
+        facebookSignUp.setVisibility(View.GONE);
 
 
 
@@ -83,20 +87,5 @@ public class SignupPage extends AppCompatActivity {
             }
         });
 
-        //Google signup.
-        googleSignup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-        //Facebook signup.
-        facebookSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
     }
 }

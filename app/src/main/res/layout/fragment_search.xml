@@ -23,6 +23,7 @@
         android:paddingStart="10dp"
         android:singleLine="true"
         android:paddingEnd="10dp"
+        android:padding="5dp"
         android:textColor="#232121"
         android:id="@+id/editTextUserNameToSearch"
         />

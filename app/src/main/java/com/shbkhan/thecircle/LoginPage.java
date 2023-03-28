@@ -42,6 +42,10 @@ public class LoginPage extends AppCompatActivity {
         login = findViewById(R.id.buttonLogin);
         googleLogin = findViewById(R.id.imageViewGoogle);
         facebookLogin = findViewById(R.id.imageViewFacebook);
+        googleLogin.setClickable(false);
+        googleLogin.setVisibility(View.GONE);
+        facebookLogin.setClickable(false);
+        facebookLogin.setVisibility(View.GONE);
 
         //Login Button is clicked.
         login.setOnClickListener(new View.OnClickListener() {
