@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/gradient"
+    android:paddingBottom="10dp">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/user"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginVertical="10dp"
+        android:layout_marginHorizontal="10dp"
+        android:id="@+id/userPhotoMessageSender"
+        />
+
+    <TextView
+        android:id="@+id/tvUserNameSenderMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="username"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/userPhotoMessageSender"
+        app:layout_constraintLeft_toRightOf="@id/userPhotoMessageSender"
+        app:layout_constraintTop_toTopOf="@id/userPhotoMessageSender" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient"
+    tools:context=".SignupPage">
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:background="@drawable/logo_the_circle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="10dp"
+        android:id="@+id/logo"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_corner"
+        app:layout_constraintTop_toBottomOf="@id/logo"
+        android:hint="Enter your email..."
+        android:inputType="textEmailAddress"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:textSize="24dp"
+        android:paddingLeft="5dp"
+        android:id="@+id/editTextEmailSignUp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_corner"
+        android:hint="Enter your password..."
+        android:inputType="textPassword"
+        android:textSize="24dp"
+        app:layout_constraintTop_toBottomOf="@id/editTextEmailSignUp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:paddingLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/editTextPasswordSignUp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_corner"
+        android:hint="Confirm Password"
+        android:textSize="24dp"
+        app:layout_constraintTop_toBottomOf="@id/editTextPasswordSignUp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:inputType="textPassword"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="5dp"
+        android:id="@+id/editTextConfirmPasswordSignUp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FFBE58"
+        android:text="Sign Up"
+        app:layout_constraintTop_toBottomOf="@id/editTextConfirmPasswordSignUp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="10dp"
+        android:textColor="#272828"
+        android:textAllCaps="false"
+        android:id="@+id/buttonSignUpSignUp"/>
+    <ImageButton
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/google"
+        app:layout_constraintTop_toBottomOf="@id/buttonSignUpSignUp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintRight_toLeftOf="@id/imageButtonFacebook"
+        android:id="@+id/imageButtonGoogle"/>
+    <ImageButton
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/facebook"
+        android:id="@+id/imageButtonFacebook"
+        app:layout_constraintTop_toBottomOf="@id/buttonSignUpSignUp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toRightOf="@id/imageButtonGoogle"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "691030517016",
+    "project_id": "the-circle-a2495",
+    "storage_bucket": "the-circle-a2495.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:691030517016:android:f0bc53a18b82dc282e2a6d",
+        "android_client_info": {
+          "package_name": "com.shbkhan.thecircle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "691030517016-vc8tc7d60bi4j9l74i6fk5qaefncfulu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.shbkhan.thecircle",
+            "certificate_hash": "36f3a232db15bc9cd70b2aded31443633eafa781"
+          }
+        },
+        {
+          "client_id": "691030517016-e8e2f8u4n588oepp8u65pdlj49d3mv4v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASuAYGtAi4O6shpuobz9UAdiUMu6412LQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "691030517016-e8e2f8u4n588oepp8u65pdlj49d3mv4v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
