@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,11 +39,12 @@ public class ChatActivity extends AppCompatActivity {
 
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-    String myId,otherId;
+    String myId,otherId,profileUrl;
     DatabaseReference referenceMine,referenceOther,referenceFetch;
     String messageId = String.valueOf(new Date().getTime());
     ArrayList<MessageModel> list;
     RecyclerView rvMessageContainer;
+    ImageView userPhoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +55,16 @@ public class ChatActivity extends AppCompatActivity {
         send = findViewById(R.id.ivSendMessage);
         username = findViewById(R.id.tvUserNameChatActivity);
         rvMessageContainer = findViewById(R.id.rvChatActivity);
+        userPhoto = findViewById(R.id.ivUserPhotoChatActivity);
 
         Intent intent = getIntent();
         username.setText(intent.getStringExtra("username"));
 
         myId = mAuth.getCurrentUser().getUid();
         otherId = intent.getStringExtra("receiverId");
+        profileUrl = intent.getStringExtra("dpUrl");
+
+        Glide.with(this).load(profileUrl).placeholder(R.drawable.user).into(userPhoto);
 
         referenceMine = firebaseDatabase.getReference().child("Users").child(myId).child("ChatRoom")
                 .child(otherId);

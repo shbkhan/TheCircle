@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,7 +35,7 @@ public class ProfileSearchAdapter extends RecyclerView.Adapter<ProfileSearchAdap
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference referenceOwn,referenceTarget,referenceNotification;
     String nameOwn,emailOwn,bioOwn,genderOwn,userIdOwn,usernameOwn,currentUserId;
-    String nameTarget,emailTarget,bioTarget,genderTarget,userIdTarget,usernameTarget;
+    String nameTarget,emailTarget,bioTarget,genderTarget,userIdTarget,usernameTarget,profilePhotoTarget;
     String notificationId;
 
     public ProfileSearchAdapter(ArrayList<AccountSetupModel> list, Context context) {
@@ -57,9 +58,10 @@ public class ProfileSearchAdapter extends RecyclerView.Adapter<ProfileSearchAdap
         bioTarget = model.getBio();
         genderTarget = model.getGender();
         userIdTarget = model.getUserId();
-        usernameTarget = model.getUserId();
+        usernameTarget = model.getUsername();
         referenceTarget = firebaseDatabase.getReference().child("Users").child(usernameTarget);
         holder.tvUsername.setText(model.getUsername());
+        Glide.with(context).load(model.getProfileImageLink()).placeholder(R.drawable.user).into(holder.image);
         referenceOwn.child("Followers").child(userIdTarget).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

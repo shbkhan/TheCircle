@@ -22,7 +22,6 @@
         <ImageView
             android:layout_width="55dp"
             android:layout_height="55dp"
-            android:background="@drawable/user"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="@id/profilePictureContainer"
             app:layout_constraintRight_toRightOf="@id/profilePictureContainer"

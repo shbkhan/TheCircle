@@ -62,6 +62,9 @@ public class HomePostAdapter extends RecyclerView.Adapter<HomePostAdapter.viewHo
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
         PostUploadModel model = list.get(position);
+        holder.delete.setClickable(false);
+        holder.delete.setVisibility(View.GONE);
+
         holder.desc.setText(model.getPostDesc());
         Glide.with(context).load(model.getPostUrl()).into(holder.postImage);
 
@@ -70,7 +73,9 @@ public class HomePostAdapter extends RecyclerView.Adapter<HomePostAdapter.viewHo
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String username = snapshot.getValue(AccountSetupModel.class).getUsername();
+                String profilePictureUrl = snapshot.getValue(AccountSetupModel.class).getProfileImageLink();
                 holder.username.setText(username);
+                Glide.with(context).load(profilePictureUrl).placeholder(R.drawable.user).into(holder.userProfilePhoto);
             }
 
             @Override
@@ -228,7 +233,7 @@ public class HomePostAdapter extends RecyclerView.Adapter<HomePostAdapter.viewHo
     }
 
     public class viewHolder extends RecyclerView.ViewHolder{
-        ImageView userProfilePhoto,postImage,likes,comments;
+        ImageView userProfilePhoto,postImage,likes,comments,delete;
         TextView username,noOfLikes,desc;
         public viewHolder(@NonNull View itemView) {
             super(itemView);
@@ -239,6 +244,7 @@ public class HomePostAdapter extends RecyclerView.Adapter<HomePostAdapter.viewHo
             username = itemView.findViewById(R.id.textViewUsernameOnHome);
             noOfLikes = itemView.findViewById(R.id.textViewNoOfLikesOnHomeScreen);
             desc = itemView.findViewById(R.id.tvDescriptionOnHome);
+            delete = itemView.findViewById(R.id.ivDelete);
         }
     }
 }

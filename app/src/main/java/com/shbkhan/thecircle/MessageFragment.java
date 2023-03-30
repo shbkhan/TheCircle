@@ -65,6 +65,7 @@ public class MessageFragment extends Fragment {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                list.clear();
                 if (snapshot.exists()){
                     for (DataSnapshot snapshot1 : snapshot.getChildren()){
                         AccountSetupModel model = snapshot1.getValue(AccountSetupModel.class);

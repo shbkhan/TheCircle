@@ -143,20 +143,7 @@ public class ProfileFragment extends Fragment {
                     bioProfileScreen.setText(accountSetupModel.getBio());
                     username = accountSetupModel.getUsername();
                     gender = accountSetupModel.getGender();
-                    try {
-                        profileImageUrl = accountSetupModel.getProfileImageLink();
-                        if (!profileImageUrl.isEmpty()){
-                            storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                @Override
-                                public void onSuccess(Uri uri) {
-                                    Glide.with(getContext()).load(uri).into(profilePicture);
-                                }
-                            });
-                        }
-                    } catch (Exception e){
-
-                    }
-
+                    Glide.with(getContext()).load(accountSetupModel.getProfileImageLink()).placeholder(R.drawable.user).into(profilePicture);
 
                     progressDialog.dismiss();
                 }

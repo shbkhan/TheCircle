@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,6 +39,8 @@ public class ProfilePostAdapter extends RecyclerView.Adapter<ProfilePostAdapter.
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     boolean alreadyLiked = false;
     String likeId;
+    String postId;
+    String idToDelete="";
 
     public ProfilePostAdapter(ArrayList<PostUploadModel> list, Context context) {
         this.list = list;
@@ -57,7 +60,11 @@ public class ProfilePostAdapter extends RecyclerView.Adapter<ProfilePostAdapter.
         
         //Set Desc and photo
         holder.desc.setText(model.getPostDesc());
-        Glide.with(context).load(model.getPostUrl()).into(holder.postImage);
+        if (model.getPostUrl()!=null){
+            Glide.with(context).load(model.getPostUrl()).placeholder(R.drawable.user).into(holder.postImage);
+        } else{
+            holder.postImage.setImageResource(R.drawable.user);
+        }
 
         //Set username
         String postedBy = model.getPostedBy();
@@ -65,7 +72,10 @@ public class ProfilePostAdapter extends RecyclerView.Adapter<ProfilePostAdapter.
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String username = snapshot.getValue(AccountSetupModel.class).getUsername();
+                String dpUrl = snapshot.getValue(AccountSetupModel.class).getProfileImageLink();
                 holder.username.setText(username);
+                Glide.with(context).load(dpUrl).placeholder(R.drawable.user).into(holder.userProfilePhoto);
+
             }
 
             @Override
@@ -75,7 +85,7 @@ public class ProfilePostAdapter extends RecyclerView.Adapter<ProfilePostAdapter.
         });
         
         //Like count
-        String postId = model.getPostId();
+        postId = model.getPostId();
         firebaseDatabase.getReference().child("Posts").child(postId).child("Likes").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -173,7 +183,57 @@ public class ProfilePostAdapter extends RecyclerView.Adapter<ProfilePostAdapter.
                 context.startActivity(intent);
             }
         });
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                firebaseDatabase.getReference().child("Posts").child(postId).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+
+                        firebaseDatabase.getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                .child("selfPost").addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        list.clear();
+                                        if (snapshot.exists()){
+                                            for (DataSnapshot snapshot1: snapshot.getChildren()){
+                                                if (Objects.equals(snapshot1.getValue(), postId)){
+                                                    idToDelete = snapshot1.getKey();
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                        firebaseDatabase.getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                                .child("selfPost").child(idToDelete).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(Void unused) {
+                                                        Toast.makeText(context, "Post Deleted succesfully", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                }).addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception e) {
+                                                        Toast.makeText(context, "Unable to delete post, Please try after some time", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(context, "Unable to delete post, Please try after some time", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+
     }
+
 
     @Override
     public int getItemCount() {
@@ -182,7 +242,7 @@ public class ProfilePostAdapter extends RecyclerView.Adapter<ProfilePostAdapter.
 
     public class viewHolder extends RecyclerView.ViewHolder{
 
-        ImageView userProfilePhoto,postImage,likes,comments;
+        ImageView userProfilePhoto,postImage,likes,comments,delete;
         TextView username,noOfLikes,desc;
         public viewHolder(@NonNull View itemView) {
             super(itemView);
@@ -193,6 +253,7 @@ public class ProfilePostAdapter extends RecyclerView.Adapter<ProfilePostAdapter.
             username = itemView.findViewById(R.id.textViewUsernameOnHome);
             noOfLikes = itemView.findViewById(R.id.textViewNoOfLikesOnHomeScreen);
             desc = itemView.findViewById(R.id.tvDescriptionOnHome);
+            delete = itemView.findViewById(R.id.ivDelete);
         }
     }
 }

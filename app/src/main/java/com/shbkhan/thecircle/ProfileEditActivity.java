@@ -112,23 +112,43 @@ public class ProfileEditActivity extends AppCompatActivity {
                         uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
                             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                String url = String.valueOf(storageReference.getDownloadUrl());
-                                AccountSetupModel model = new AccountSetupModel(name,username,bio,gender,email);
-                                model.setProfileImageLink(url);
-                                reference.setValue(model).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                     @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if (task.isSuccessful()){
-                                            Intent intent = new Intent(ProfileEditActivity.this,MainActivity.class);
-                                            startActivity(intent);
-                                            finish();
-                                        } else {
-                                            progressDialog.dismiss();
-                                            Toast.makeText(ProfileEditActivity.this, "Error uploading", Toast.LENGTH_SHORT).show();
-                                        }
+                                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                        storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                            @Override
+                                            public void onSuccess(Uri uri) {
+                                                AccountSetupModel model = new AccountSetupModel(name,username,bio,gender,email);
+                                                model.setProfileImageLink(uri.toString());
+                                                model.setUserId(FirebaseAuth.getInstance().getCurrentUser().getUid());
+
+                                                reference.setValue(model).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        if (task.isSuccessful()){
+                                                            Intent intent = new Intent(ProfileEditActivity.this,MainActivity.class);
+                                                            startActivity(intent);
+                                                            finish();
+                                                        } else {
+                                                            progressDialog.dismiss();
+                                                            Toast.makeText(ProfileEditActivity.this, "Error uploading", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    }
+                                                });
+                                            }
+                                        }).addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+
+                                            }
+                                        });
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+
                                     }
                                 });
-
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override

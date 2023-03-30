@@ -62,6 +62,7 @@ public class NotificationFragment extends Fragment {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                list.clear();
                 if (snapshot.exists()){
                     for (DataSnapshot snapshot1 : snapshot.getChildren()){
                         NotificationModel model = snapshot1.getValue(NotificationModel.class);

@@ -80,7 +80,7 @@ public class HomeScreen extends Fragment {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
+                list.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
                     PostUploadModel post = dataSnapshot.getValue(PostUploadModel.class);
                     assert post != null;
