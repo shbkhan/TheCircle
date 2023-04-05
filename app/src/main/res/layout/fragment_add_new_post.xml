@@ -54,6 +54,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="10dp"
+        android:padding="10dp"
         android:hint="Description"
         android:textColorHint="#7C868F"
         android:textColor="#232121"

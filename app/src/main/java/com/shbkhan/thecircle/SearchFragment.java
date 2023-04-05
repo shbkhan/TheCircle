@@ -45,6 +45,7 @@ public class SearchFragment extends Fragment {
     Button btnFollow;
     ProgressDialog progressDialog;
     String searchedUID;
+    boolean userPresent = false;
 
 
     public SearchFragment() {
@@ -73,6 +74,8 @@ public class SearchFragment extends Fragment {
                 progressDialog.setMessage("Please Wait");
                 progressDialog.show();
                 progressDialog.setCancelable(false);
+                userPresent = false;
+                list.clear();
                 String username = usernameSearch.getText().toString().trim();
                 if (!username.isEmpty()){
                     db.collection("UserNames").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -81,6 +84,7 @@ public class SearchFragment extends Fragment {
                             if (task.isSuccessful()){
                                 for(QueryDocumentSnapshot snapshot: task.getResult()){
                                     if (snapshot.getString("Username").equals(username)){
+                                        userPresent = true;
                                         searchedUID = snapshot.getString("userId");
                                         databaseReference = firebaseDatabase.getReference().child("Users").child(searchedUID);
                                         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -101,8 +105,12 @@ public class SearchFragment extends Fragment {
                                         });
                                         break;
                                     } else{
-                                        Toast.makeText(getActivity(), "No such user", Toast.LENGTH_SHORT).show();
+
                                     }
+                                }
+
+                                if (!userPresent){
+                                    Toast.makeText(getContext(), "No such user", Toast.LENGTH_SHORT).show();
                                 }
                                 progressDialog.dismiss();
                             } else{
