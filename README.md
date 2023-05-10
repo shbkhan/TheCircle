@@ -26,52 +26,52 @@ To use the app, you need to register with your email and password. After registr
 ## Snapshots
 <details>
   <summary>Splash Screen</summary>
-  <img src="app/src/main/res/drawable/splash.jpg" alt="Splash Screen">
+  <img src="app/src/main/res/drawable/splash.jpg" alt="Splash Screen" width="200" height="400">
 </details>
 
 
 <details>
   <summary>Login/Signup Page</summary>
-  <img src="app/src/main/res/drawable/login%20signup.jpg" alt="Signup Page">
+  <img src="app/src/main/res/drawable/login%20signup.jpg" alt="Signup Page" width="200" height="400">
 </details>
 
 <details>
   <summary>Signup Page</summary>
-  <img src="app/src/main/res/drawable/photo_2023-04-10_22-26-52.jpg" alt="Signup Page">
-  <img src="app/src/main/res/drawable/Signing%20up.jpg" alt="Signing up">
+  <img src="app/src/main/res/drawable/photo_2023-04-10_22-26-52.jpg" alt="Signup Page" width="200" height="400">
+  <img src="app/src/main/res/drawable/Signing%20up.jpg" alt="Signing up" width="200" height="400">
 </details>
 
 <details>
   <summary>Account Setup</summary>
-  <img src="app/src/main/res/drawable/account%20setup.jpg" alt="Account Setup">
+  <img src="app/src/main/res/drawable/account%20setup.jpg" alt="Account Setup" width="200" height="400">
 </details>
 
 <details>
   <summary>Homepage</summary>
-  <img src="app/src/main/res/drawable/homepage.jpg" alt="Homepage">
+  <img src="app/src/main/res/drawable/homepage.jpg" alt="Homepage" width="200" height="400">
 </details>
 
 <details>
   <summary>MainScreen</summary>
-  <img src="app/src/main/res/drawable/mainscreen.jpg" alt="MainScreen">
+  <img src="app/src/main/res/drawable/mainscreen.jpg" alt="MainScreen" width="200" height="400">
 </details>
 
 <details>
   <summary>Edit Profile</summary>
-  <img src="app/src/main/res/drawable/edit%20profile.jpg" alt="Edit Profile">
+  <img src="app/src/main/res/drawable/edit%20profile.jpg" alt="Edit Profile" width="200" height="400">
 </details>
 
 <details>
   <summary>New Post</summary>
-  <img src="app/src/main/res/drawable/new%20post.jpg" alt="New Post">
+  <img src="app/src/main/res/drawable/new%20post.jpg" alt="New Post" width="200" height="400">
 </details>
 
 <details>
   <summary>Notification</summary>
-  <img src="app/src/main/res/drawable/notification.jpg" alt="Notification">
+  <img src="app/src/main/res/drawable/notification.jpg" alt="Notification" width="200" height="400">
 </details>
 
 <details>
   <summary>Message</summary>
-  <img src="app/src/main/res/drawable/message.jpg" alt="Splash Screen">
+  <img src="app/src/main/res/drawable/message.jpg" alt="Message" width="200" height="400">
 </details>
