@@ -22,3 +22,56 @@ To use the app, you need to register with your email and password. After registr
 **Real-time Messaging:** The application also gives the functionality of real-time messaging to the followers, which can help users interact with each other better.
 
 **Delete Posts:** Users can delete their own posts if they wish to.
+
+## Snapshots
+<details>
+  <summary>Splash Screen</summary>
+  <img src="app/src/main/res/drawable/splash.jpg" alt="Splash Screen">
+</details>
+
+
+<details>
+  <summary>Login/Signup Page</summary>
+  <img src="app/src/main/res/drawable/login%20signup.jpg" alt="Signup Page">
+</details>
+
+<details>
+  <summary>Signup Page</summary>
+  <img src="app/src/main/res/drawable/photo_2023-04-10_22-26-52.jpg" alt="Signup Page">
+  <img src="app/src/main/res/drawable/Signing%20up.jpg" alt="Signing up">
+</details>
+
+<details>
+  <summary>Account Setup</summary>
+  <img src="app/src/main/res/drawable/account%20setup.jpg" alt="Account Setup">
+</details>
+
+<details>
+  <summary>Homepage</summary>
+  <img src="app/src/main/res/drawable/homepage.jpg" alt="Homepage">
+</details>
+
+<details>
+  <summary>MainScreen</summary>
+  <img src="app/src/main/res/drawable/mainscreen.jpg" alt="MainScreen">
+</details>
+
+<details>
+  <summary>Edit Profile</summary>
+  <img src="app/src/main/res/drawable/edit%20profile.jpg" alt="Edit Profile">
+</details>
+
+<details>
+  <summary>New Post</summary>
+  <img src="app/src/main/res/drawable/new%20post.jpg" alt="New Post">
+</details>
+
+<details>
+  <summary>Notification</summary>
+  <img src="app/src/main/res/drawable/notification.jpg" alt="Notification">
+</details>
+
+<details>
+  <summary>Message</summary>
+  <img src="app/src/main/res/drawable/message.jpg" alt="Splash Screen">
+</details>
